@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<script type="text/javascript" src="jquery.js"></script>
+	<script type="text/javascript" src="underscore-min.js"></script>
+	<script type="text/javascript" src="backbone-min.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+<script type="text/javascript">
+var modelClass = Backbone.Model.extend({
+	urlRoot:".itemInfo/itemList.json",
+	defaults:
+	{
+		id:"def Item",
+		name:"def name",
+		category:"def cat"
+	}
+});
+
+var modelObj1 = new modelClass();
+//alert(modelObj1.get("id"));
+var val = "id:"+modelObj1.get("id")+"            name:"+modelObj1.get("name")+"           category:"+modelObj1.get("category");
+
+//$("#showVal").html(val);
+document.getElementById("showVal").innerHTML = "haha";
+
+function fetchAndShow()
+{
+	
+	modelObj1.fetch();
+	$("#showVal").html("Fetchid:"+modelObj1.get("id")+"        Fetchname:"+modelObj1.get("name")+"          Fetchcategory:"+modelObj1.get("category"));
+
+}
+
+function loaded()
+{
+	
+	document.getElementById("showVal").innerHTML = val;
+
+}
+</script>
+</head>
+
+<body onload="loaded()">
+	<div id="showVal" class="display">Display region</div>
+	<input type="button" id="fetchBut" value="fetch" onclick="fetchAndShow()" />
+</body>
+</html>

@@ -1,0 +1,1 @@
+The url root in this example was not working as expected while learning backbone.js.
